@@ -9,6 +9,10 @@
             _Precio = precio;
             _Descripcion = descripcion;
         }
+        public EntidadProducto()
+        {
+
+        }
 
         public int _idProducto { get; set; }
         public string _Nombre { get; set; }
