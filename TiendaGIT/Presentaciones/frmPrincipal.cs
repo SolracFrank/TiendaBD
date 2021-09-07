@@ -29,6 +29,16 @@ namespace Presentaciones
             producto.Mostrar(dtgDatos, txtBuscar.Text);
         }
 
+        void borrar()
+        {
+            _prod._idProducto = int.Parse(producto.getID(txtNombre.Text));
+            _prod._Nombre = txtNombre.Text;
+            _prod._Precio = double.Parse(txtPrecio.Text);
+            _prod._Descripcion = txtDescripcion.Text;
+
+            producto.BorrarDatos(_prod);
+            
+        }
         void Limpiar()
         {
             txtNombre.Clear();
@@ -37,17 +47,12 @@ namespace Presentaciones
         }
         void editar()
         {
-            
-
-
             _prod._idProducto = int.Parse(producto.getID(txtNombre.Text));
             _prod._Nombre = txtNombre.Text;
             _prod._Precio = double.Parse(txtPrecio.Text);
             _prod._Descripcion = txtDescripcion.Text;
 
             producto.ActualizarDatos(_prod);
-
-            
         }
         void add()
         {
@@ -63,6 +68,7 @@ namespace Presentaciones
         {
             Cargar();
             btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -76,16 +82,13 @@ namespace Presentaciones
             {
                 add();
             }
-            else
-            {
-                
-            }
             Limpiar();
         }
 
         private void dtgDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
             txtNombre.Text = dtgDatos.CurrentRow.Cells["Nombre"].Value.ToString();
             txtDescripcion.Text = dtgDatos.CurrentRow.Cells["Descripcion"].Value.ToString();
             txtPrecio.Text = dtgDatos.CurrentRow.Cells["Precio"].Value.ToString();
@@ -95,6 +98,14 @@ namespace Presentaciones
         {
             editar();
             btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            borrar();
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
     }
 }

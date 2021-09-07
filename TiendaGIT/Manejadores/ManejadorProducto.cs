@@ -32,7 +32,7 @@ namespace Manejadores
 
         public string BorrarDatos(EntidadProducto producto)
         {
-            return _base.ConsultaRetorno(string.Format("p_BorrarProducto ({0});", producto._idProducto));
+            return _base.ConsultaRetorno(string.Format("call p_BorrarProducto('{0}');", producto._Nombre));
         }
 
         public void ActualizarDatos(EntidadProducto producto)

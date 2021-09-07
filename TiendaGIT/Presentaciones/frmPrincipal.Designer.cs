@@ -87,6 +87,7 @@ namespace Presentaciones
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Borrar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtBuscar
             // 
