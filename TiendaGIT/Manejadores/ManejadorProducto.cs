@@ -22,8 +22,12 @@ namespace Manejadores
         public void IngresarDatos(EntidadProducto producto)
         {
             
-             _base.Consultar(string.Format("INSERT INTO productos VALUES(null,'{0}',{1},'{2}');", producto._Nombre, producto._Precio,
+             _base.Consultar(string.Format("INSERT INTO producto VALUES(null,'{0}',{1},'{2}');", producto._Nombre, producto._Precio,
                 producto._Descripcion));
+        }
+        public string getID(string dato)
+        {
+            return _base.ConsultaRetorno(string.Format("SELECT idProducto FROM producto WHERE Nombre = '{0}'",dato));
         }
 
         public string BorrarDatos(EntidadProducto producto)
